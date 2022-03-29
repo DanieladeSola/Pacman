@@ -418,6 +418,7 @@ def startGame():
   monsta_list.add(Clyde)
   all_sprites_list.add(Clyde)
 
+  #CHANGE - make lists for each type of ghost
   # Draw the grid
   for row in range(19):
       for column in range(19):
@@ -452,6 +453,7 @@ def startGame():
   while done == False:
       # ALL EVENT PROCESSING SHOULD GO BELOW THIS COMMENT
       for event in pygame.event.get():
+        #CHANGE - Add timer for doubling the ghosts
           if event.type == pygame.QUIT:
               done=True
 
@@ -479,6 +481,8 @@ def startGame():
    
       # ALL GAME LOGIC SHOULD GO BELOW THIS COMMENT
       Pacman.update(wall_list,gate)
+      
+ # CHANGE - The code needs to run on multiple instances of each ghost
 
       returned = Pinky.changespeed(Pinky_directions,False,p_turn,p_steps,pl)
       p_turn = returned[0]
@@ -575,6 +579,7 @@ def doNext(message,left,all_sprites_list,block_list,monsta_list,pacman_collide,w
 
       clock.tick(10)
 
+# CHANGE - add code to duplicate ghosts
 startGame()
 
 pygame.quit()
