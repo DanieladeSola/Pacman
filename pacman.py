@@ -2,6 +2,7 @@
 #https://github.com/hbokmann/Pacman
   
 import pygame._view
+import time
   
 black = (0,0,0)
 white = (255,255,255)
@@ -419,6 +420,12 @@ def startGame():
   all_sprites_list.add(Clyde)
 
   #CHANGE - make lists for each type of ghost
+  
+  blinky_list = [];
+  pinky_list = [];
+  inky_list = [];
+  clyde_list = [];
+  
   # Draw the grid
   for row in range(19):
       for column in range(19):
@@ -449,11 +456,28 @@ def startGame():
   done = False
 
   i = 0
+  
+  prevTime = 0;
 
   while done == False:
       # ALL EVENT PROCESSING SHOULD GO BELOW THIS COMMENT
       for event in pygame.event.get():
         #CHANGE - Add timer for doubling the ghosts
+        
+        currentTime = time.time();
+        changeInTime = currentTime - prevTime;
+        
+        if changeInTime >= 30:
+          if blinky_list:
+            #double ghosts
+          if pinky_list:
+            #double ghosts
+          if inky_list:
+            #double ghosts
+          if clyde_list:
+            #double ghosts
+        prevTime = currentTime;
+        
           if event.type == pygame.QUIT:
               done=True
 
@@ -484,6 +508,7 @@ def startGame():
       
  # CHANGE - The code needs to run on multiple instances of each ghost
 
+      
       returned = Pinky.changespeed(Pinky_directions,False,p_turn,p_steps,pl)
       p_turn = returned[0]
       p_steps = returned[1]
